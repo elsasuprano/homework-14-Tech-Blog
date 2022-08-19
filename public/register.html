@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
+</head>
+<body>
+    <div class="container">
+        <h1>Tech Blog</h1>
+        <h2>Register</h2>
+
+    <div class="row">
+        <form class="col s12">
+          <div class="row">
+            <div class="input-field col s6">
+              <input placeholder="username" id="username" type="text" class="validate">
+              <label for="user_name">Username</label>
+            </div>
+            <div class="input-field col s6">
+                <input placeholder="password" id="password" type="text" class="validate">
+                <label for="pass_word">Password</label>
+              </div>
+            
+          </div>
+          
+          </div>
+          
+          </div>
+          
+            </div>
+          </div>
+
+          <a id="register" class="waves-effect waves-light btn">Register</a>
+
+        </form>
+         
+       
+       
+       
+      </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script src=https://cdnjs.cloudflare.com/ajax/libs/axios/0.27.2/axios.min.js></script>
+
+    <script>
+      document.getElementById('register').addEventListener('click', event => {
+          event.preventDefault()
+          //console.log(document.getElementById("register").value)
+          //console.log(document.getElementById("password").value)
+
+              let newUser = {
+              user: document.getElementById("username").value,
+              password: document.getElementById("password").value
+         }
+          axios.post('/api/users/register', newUser)
+          .then(res=> {
+              console.log(res)
+              window.location='login.html'
+          })
+
+      })
+
+    </script>
+</body>
+</html>

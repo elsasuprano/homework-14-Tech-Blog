@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>home</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
+</head>
+<body>
+   
+    <div class="container">
+        <h1>Home</h1>
+        <h2>Welcome to Tech Blog!</h2>
+        <div class="row">
+            <form class="col s12">
+              <div class="row">
+                <div class="input-field col s12">
+                  <textarea id="title" class="materialize-textarea"></textarea>
+                  <label for="textarea1">Title</label>
+                </div>
+              </div>
+            </form>
+          </div>
+          <div class="row">
+            <form class="col s12">
+              <div class="row">
+                <div class="input-field col s12">
+                  <textarea id="body" class="materialize-textarea"></textarea>
+                  <label for="textarea1">Body</label>
+                </div>
+            </div>
+            <a id="submitPost" class="waves-effect waves-light btn">Submit Post</a>
+            </form>
+         </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script src=https://cdnjs.cloudflare.com/ajax/libs/axios/0.27.2/axios.min.js></script>
+  
+<script>
+
+
+    document.getElementById('submitPost').addEventListener('click', event => {
+       let newPost = {
+           title: document.getElementById('title').value, 
+           body: document.getElementById('body').value
+       }
+       console.log(newPost)
+       axios.post('/api/posts', newPost, {
+           headers: {
+               'Authorization': 'Bearer ${localStorage.getItem('token')}'}
+       })
+       .then(res=> {
+           console.log(res.data)
+       })
+   })
+
+
+</script>
+
+</body>
+</html>
