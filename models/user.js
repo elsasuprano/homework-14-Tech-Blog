@@ -1,4 +1,4 @@
-const pls = require('passport-local-sequelize')
+const pls = require ('passport-local-sequelize')
 const { DataTypes } = require('sequelize')
 const sequelize = require('../db')
 

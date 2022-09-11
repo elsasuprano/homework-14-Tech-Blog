@@ -41,6 +41,14 @@
   
 <script>
 
+  axios.get('/api/posts', {
+           headers: {
+               'Authorization': 'Bearer ${localStorage.getItem('token')}'}
+       })
+       .then(res=> {
+         console.log(res.data)
+       })
+
 
     document.getElementById('submitPost').addEventListener('click', event => {
        let newPost = {
@@ -54,6 +62,13 @@
        })
        .then(res=> {
            console.log(res.data)
+           let posts = res.data
+           posts.forEach(post => {
+             document.getElementById('posts').innerhtml += `
+             <h4> ${post.title} </h4>
+             <h5> ${post.body} </h4>
+             `
+           })
        })
    })
 
